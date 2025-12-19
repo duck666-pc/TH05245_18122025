@@ -1,16 +1,23 @@
 package model;
 
 public class PhieuGiamGia {
-    public int id;
-    public int loatPhieuId;
-    public String ma;
-    public String ten;
-    public int soLuong;
-    public String loaiGiam;
-    public String dieuKienToiThieu;
-    public String giaTriToiDa;
+    private int id;
+    private int loatPhieuId;
+    private String ma;
+    private String ten;
+    private int soLuong;
+    private String loaiGiam;
+    private String dieuKienToiThieu;
+    private String giaTriToiDa;
 
+    // Constructor mặc định (không làm gì)
     public PhieuGiamGia() {
+    }
+
+    // Constructor đầy đủ
+    public PhieuGiamGia(int id, int loatPhieuId, String ma, String ten,
+                        int soLuong, String loaiGiam, String dieuKienToiThieu,
+                        String giaTriToiDa) {
         this.id = id;
         this.loatPhieuId = loatPhieuId;
         this.ma = ma;

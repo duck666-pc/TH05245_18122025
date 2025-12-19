@@ -1,42 +1,60 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: minhd
-  Date: 18/12/2025
-  Time: 2:19 CH
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>List</title>
+    <title>Danh sách phiếu giảm giá</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
-    <h1>Danh sách phiếu giảm giá</h1>
-    <table border = "1">
-        <tr>ID</tr>
-        <tr>Loại phiếu ID</tr>
-        <tr>Mã</tr>
-        <tr>Tên</tr>
-        <tr>Số lượng</tr>
-        <tr>Loại giảm</tr>
-        <tr>Điều kiện tối thiếu</tr>
-        <tr>Giá trị tối đa</tr>
+<h1>Danh sách phiếu giảm giá</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Loại phiếu ID</th>
+        <th>Mã</th>
+        <th>Tên</th>
+        <th>Số lượng</th>
+        <th>Loại giảm</th>
+        <th>Điều kiện tối thiểu</th>
+        <th>Giá trị tối đa</th>
+        <th>Thao tác</th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${pggl}" var="pgg">
         <tr>
-            <c:forEach>
-                <td>${pggl.id}</td>
-                <td>${pggl.loaiPhieuId}</td>
-                <td>${pggl.ma}</td>
-                <td>${pggl.ten}</td>
-                <td>${pggl.soLuong}</td>
-                <td>${pggl.loaiGiam}</td>
-                <td>${pggl.dieuKienToiThieu}</td>
-                <td>${pggl.giaTriToiDa}</td>
-                <td>
-                    <a href="${pageContext.request.contextPath}/voucher-management/update?id=${pgg.id}">Sửa</a>
-                </td>
-            </c:forEach>
+            <td>${pgg.id}</td>
+            <td>${pgg.loatPhieuId}</td>
+            <td>${pgg.ma}</td>
+            <td>${pgg.ten}</td>
+            <td>${pgg.soLuong}</td>
+            <td>${pgg.loaiGiam}</td>
+            <td>${pgg.dieuKienToiThieu}</td>
+            <td>${pgg.giaTriToiDa}</td>
+            <td>
+                <a href="${pageContext.request.contextPath}/voucher-management/update?id=${pgg.id}">Sửa</a>
+            </td>
         </tr>
-    </table>
+    </c:forEach>
+    </tbody>
+</table>
+
+<c:if test="${empty pggl}">
+    <p>Không có dữ liệu trong database</p>
+</c:if>
 </body>
 </html>
